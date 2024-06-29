@@ -10,12 +10,12 @@ class Solution
     function removeElement(&$nums, $val)
     {
         $k = count($nums);
-        $lastClearedIndex = $k - 1;
+        $lastClearIndex = $k - 1;
         for ($i = $k - 1; $i >= 0; $i--) {
             if ($nums[$i] === $val) {
-                $nums[$i] = $nums[$lastClearedIndex];
-                $nums[$lastClearedIndex] = -1;
-                $lastClearedIndex = $lastClearedIndex - 1;
+                $nums[$i] = $nums[$lastClearIndex];
+                $nums[$lastClearIndex] = -1;
+                $lastClearedIndex = $lastClearIndex - 1;
 
                 $k--;
             }
