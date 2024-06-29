@@ -10,6 +10,10 @@ class Solution
     {
         $k = 0;
 
+        //much better performance
+        if (count($nums) < 2)
+            return $k + 1;
+
         for ($i = 1; $i < count($nums); $i++) {
             if (($nums[$i] !== $nums[$k])) {
                 $nums[++$k] = $nums[$i];
