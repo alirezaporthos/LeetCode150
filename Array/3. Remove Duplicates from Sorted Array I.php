@@ -8,17 +8,14 @@ class Solution
      */
     function removeDuplicates(&$nums)
     {
-        $array = [];
-        $array[] = $nums[0];
+        $k = 0;
 
-        $k = 1;
-        for ($i = 0; $i < count($nums) - 1; $i++) {
-            if ($nums[$i] !== $nums[$i + 1]) {
-                $array[] = $nums[$i + 1];
-                $k++;
+        for ($i = 1; $i < count($nums); $i++) {
+            if ($nums[$i] !== $nums[$k]) {
+                $nums[++$k] = $nums[$i];
             }
         }
-        $nums = $array;
-        return $k;
+
+        return $k + 1;
     }
 }
