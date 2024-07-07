@@ -12,13 +12,27 @@ class Solution
     {
         $length = count($nums);
         $k = $k % $length;
-        $newArray = [];
 
-        for ($i = 0; $i < $length; $i++) {
-            $newIndex = ($length - ($k - $i)) % $length;
-
-            $newArray[$i] = $nums[$newIndex];
+        for ($start = 0, $end = $length - 1; $start < $end; $start++, $end--) {
+            [$nums[$start], $nums[$end]] = [$nums[$end], $nums[$start]];
         }
-        $nums = $newArray;
+
+        for ($start = 0, $end = $k - 1; $start < $end; $start++, $end--) {
+            [$nums[$start], $nums[$end]] = [$nums[$end], $nums[$start]];
+        }
+
+        for ($start = $k, $end = $length - 1; $start < $end; $start++, $end--) {
+            [$nums[$start], $nums[$end]] = [$nums[$end], $nums[$start]];
+        }
+
+        // space complexity o(n)
+        // $newArray = [];
+
+        // for ($i = 0; $i < $length; $i++) {
+        //     $newIndex = ($length - ($k - $i)) % $length;
+
+        //     $newArray[$i] = $nums[$newIndex];
+        // }
+        // $nums = $newArray;
     }
 }
