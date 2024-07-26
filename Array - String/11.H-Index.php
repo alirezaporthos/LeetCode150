@@ -25,8 +25,10 @@ class Solution
                     $hIndex--;
                     break;
                 }
-                if ($errorChances + 1 >= $articlesCount - $i)
+                if ($errorChances + 1 >= $articlesCount - $i) {
                     $success = true;
+                    break;
+                }
             }
         }
     }
