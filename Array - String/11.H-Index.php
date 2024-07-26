@@ -9,27 +9,18 @@ class Solution
      */
     function hIndex($citations)
     {
-        // first answer
+        // second answer o(nlog(n) + n)
         $articlesCount = count($citations);
-        $hIndex = $articlesCount;
-        $errorChances = 0;
-        $success = false;
+        $hIndex = 0;
 
-        while (!$success) {
-            $errorChances = $articlesCount - $hIndex;
-            for ($i = 0; $i < $articlesCount; $i++) {
-                if ($citations[$i] < $hIndex) {
-                    $errorChances--;
-                }
-                if ($errorChances < 0) {
-                    $hIndex--;
-                    break;
-                }
-                if ($errorChances + 1 >= $articlesCount - $i) {
-                    $success = true;
-                    break;
-                }
-            }
+        //average case o(nlogn), least likely o(n^2)
+        rsort($citations);
+        for ($i = 0; $i < $articlesCount; $i++) {
+            if ($hIndex > $citations[$i])
+                $hIndex++;
+            else
+                break;
         }
+        return $hIndex;
     }
 }
