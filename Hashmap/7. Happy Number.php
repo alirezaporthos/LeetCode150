@@ -8,36 +8,31 @@ class Solution
      */
     function isHappy($n)
     {
-
         $hash = [];
-        while (true) {
-            $numbers = $this->getNumbers($n);
+        $sumSquare = $n;
 
-            $sumSquare = 0;
-            foreach ($numbers as $number) {
-                $sumSquare += $number * $number;
-            }
-
+        while (!$hash[$sumSquare]) {
             if ($sumSquare == 1)
                 return true;
 
-            if ($hash[$sumSquare])
-                return false;
-
             $hash[$sumSquare] = 1;
-            $n = $sumSquare;
+            $sumSquare = $this->getSumSquare($sumSquare);
         }
+        return false;
     }
-    function getNumbers($n)
-    {
-        $numbers = [];
 
+    function getSumSquare($n)
+    {
+        $sumSquare = 0;
         while ($n >= 10) {
-            $numbers[] = $n % 10;
+            $number = $n % 10;
+            $sumSquare += $number * $number;
+
             $n = floor($n / 10);
         }
-        $numbers[] = $n;
 
-        return $numbers;
+        $sumSquare += $n * $n;
+
+        return $sumSquare;
     }
 }
