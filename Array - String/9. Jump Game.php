@@ -17,8 +17,7 @@ class Solution
                 $energy = $nums[$i];
             }
 
-            if ($i < $numsLength)
-                $energy--;
+            $energy--;
 
             if ($energy < 0)
                 return false;
